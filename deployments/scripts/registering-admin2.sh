@@ -9,7 +9,7 @@ echo
 echo "  username: admin"
 echo "  password: adminpw"
 echo
-fabric-ca-client enroll -u http://admin:adminpw@server-ca:7054
+fabric-ca-client enroll -u https://admin:adminpw@server-ca:7054
 if [ $? != 0 ]; then
     echo "Failed"
     exit 1

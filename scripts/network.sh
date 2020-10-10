@@ -4,14 +4,7 @@ COMMAND=$1
 
 export SERVER_IMAGE_NAME=oc/ca-server
 
-function run(){
-    docker-compose -f ./deployments/docker-compose.yaml up -d
-}
-
-function stop(){
-    docker-compose -f ./deployments/docker-compose.yaml down
-}
-
+# Network operations
 function cleanServer(){
     rm -rf ./deployments/fabric-ca-server-home/msp
     rm -f ./deployments/fabric-ca-server-home/ca-cert.pem
@@ -34,36 +27,30 @@ function cleanImages(){
     docker rmi -f ${SERVER_IMAGE_NAME}
 }
 
-function client(){
-    docker-compose -f ./deployments/docker-compose.yaml exec client-ca /bin/bash
+function run(){
+    docker-compose -f ./deployments/docker-compose.yaml up -d
 }
 
-function server(){
-    docker-compose -f ./deployments/docker-compose.yaml exec server-ca /bin/bash
+function stop(){
+    docker-compose -f ./deployments/docker-compose.yaml down
 }
-
-message="$0  clean | client | run | server | stop "
 
 case "$COMMAND" in
     clean)
+        ./scripts/crypto.sh clean
         cleanClient
         cleanServer
         cleanNetwork
         cleanImages
         ;;
-    client)
-        client
-        ;;
     run)
+        ./scripts/crypto.sh cert
         run
-        ;;
-    server)
-        server
         ;;
     stop)
         stop
         ;;
     *)
-        echo $message
+        echo "$0  clean | client | run | server | stop "
         ;;
 esac

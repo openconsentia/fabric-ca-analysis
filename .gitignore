@@ -1,6 +1,9 @@
 # MacOS system file
 .DS_Store
 
+# Crypto
+deployments/Crypto
+
 # Fabric CA Client
 deployments/fabric-ca-client-home/msp
 
