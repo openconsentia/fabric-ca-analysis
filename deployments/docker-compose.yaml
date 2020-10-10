@@ -1,0 +1,57 @@
+version: '3'
+
+services:
+
+    server-ca:
+        build:
+            context: ../
+            dockerfile: ./deployments/server.dockerfile
+        image: ${SERVER_IMAGE_NAME}
+        container_name: server-ca
+        environment:
+            - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
+            - FABRIC_CA_SERVER_CA_NAME=server.ca
+        working_dir: /opt
+        command: sh -c "fabric-ca-server start -b admin:adminpw -d"
+        volumes:
+            - ./fabric-ca-server-home:/etc/hyperledger/fabric-ca-server
+            - ./scripts/query.sh:/opt/query.sh
+        ports:
+            - 7054:7054
+        networks: 
+            - oc-fabric-ca-analysis
+
+    tls-ca:
+        image: hyperledger/fabric-ca:1.4.9
+        container_name: tls-ca
+        command: sh -c 'fabric-ca-server start -d -b tls-ca-admin:tls-ca-adminpw --port 7052'
+        environment: 
+            - FABRIC_CA_SERVER_HOME=/etc/hyperledger/fabric-ca-server
+            - FABRIC_CA_SERVER_TLS_ENABLED=true
+            - FABRIC_CA_SERVER_CSR_CN=ca-tls
+            - FABRIC_CA_SERVER_CSR_HOSTS=0.0.0.0
+            - FABRIC_CA_SERVER_DEBUG=true
+        volumes:
+            - ./fabric-tlsca-server:/etc/hyperledger/fabric-ca-server
+        ports:
+            - 7052:7052
+        networks: 
+            - oc-fabric-ca-analysis      
+
+    client-ca:
+        image: hyperledger/fabric-ca:1.4.9
+        container_name: client-ca
+        tty: true
+        environment:
+            - FABRIC_CA_CLIENT_HOME=/opt/fabric-ca-client-home
+        working_dir: /opt
+        volumes:
+            - ./scripts/registering-admin2.sh:/opt/registering-admin2.sh
+            - ./scripts/revoke-identity.sh:/opt/revoke-identity.sh
+            - ./fabric-ca-client-home/fabric-ca-client-config.yaml:/opt/fabric-ca-client-home/fabric-ca-client-config.yaml
+            - ./fabric-ca-client-home/msp:/opt/fabric-ca-client-home/msp
+        networks: 
+            - oc-fabric-ca-analysis
+
+networks:
+    oc-fabric-ca-analysis:
