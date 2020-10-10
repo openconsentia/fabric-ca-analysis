@@ -11,11 +11,16 @@ services:
         environment:
             - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
             - FABRIC_CA_SERVER_CA_NAME=server.ca
+            - FABRIC_CA_SERVER_TLS_ENABLED=true
+            - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server/crypto/network-cert.pem
+            - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server/crypto/secrets.key
         working_dir: /opt
         command: sh -c "fabric-ca-server start -b admin:adminpw -d"
         volumes:
             - ./fabric-ca-server-home:/etc/hyperledger/fabric-ca-server
             - ./scripts/query.sh:/opt/query.sh
+            - ./crypto/network-cert.pem:/etc/hyperledger/fabric-ca-server/crypto/network-cert.pem
+            - ./crypto/secrets.key:/etc/hyperledger/fabric-ca-server/crypto/secrets.key
         ports:
             - 7054:7054
         networks: 
@@ -50,6 +55,8 @@ services:
             - ./scripts/revoke-identity.sh:/opt/revoke-identity.sh
             - ./fabric-ca-client-home/fabric-ca-client-config.yaml:/opt/fabric-ca-client-home/fabric-ca-client-config.yaml
             - ./fabric-ca-client-home/msp:/opt/fabric-ca-client-home/msp
+            - ./crypto/network-cert.pem:/opt/certs/network-cert.pem
+            - ./crypto/secrets.key:/opt/certs/secrets.key
         networks: 
             - oc-fabric-ca-analysis
 

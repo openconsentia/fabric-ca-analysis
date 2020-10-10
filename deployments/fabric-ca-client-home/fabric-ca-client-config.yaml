@@ -40,7 +40,7 @@
 #############################################################################
 
 # URL of the Fabric-ca-server (default: http://localhost:7054)
-url: http://server-ca:7054
+url: https://server-ca:7054
 
 # Membership Service Provider (MSP) directory
 # This is useful when the client is used to enroll a peer or orderer, so
@@ -57,14 +57,14 @@ mspdir: msp
 #    keyfile - PEM-encoded key file for when client authentication
 #    is enabled on server
 #############################################################################
-# tls:
-#   # TLS section for secure socket connection
-#   enabled: true
-#   certfiles:
-#     - /opt/certs/network-cert.pem
-#   client:
-#     certfile: /opt/certs/network-cert.pem
-#     keyfile: /opt/certs/secret.key
+tls:
+  # TLS section for secure socket connection
+  enabled: true
+  certfiles:
+    - /opt/certs/network-cert.pem
+  client:
+    certfile: /opt/certs/network-cert.pem
+    keyfile: /opt/certs/secrets.key
 
 #############################################################################
 #  Certificate Signing Request section for generating the CSR for an
