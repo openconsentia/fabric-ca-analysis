@@ -51,6 +51,6 @@ case "$COMMAND" in
         stop
         ;;
     *)
-        echo "$0  clean | client | run | server | stop "
+        echo "$0  clean | run | stop "
         ;;
 esac
