@@ -27,14 +27,6 @@ function cleanImages(){
     docker rmi -f ${SERVER_IMAGE_NAME}
 }
 
-function run(){
-    docker-compose -f ./deployments/docker-compose.yaml up -d
-}
-
-function stop(){
-    docker-compose -f ./deployments/docker-compose.yaml down
-}
-
 case "$COMMAND" in
     clean)
         ./scripts/crypto.sh clean
@@ -45,10 +37,13 @@ case "$COMMAND" in
         ;;
     run)
         ./scripts/crypto.sh cert
-        run
+        docker-compose -f ./deployments/docker-compose.yaml up -d
+        ;;
+    status)
+        docker-compose -f ./deployments/docker-compose.yaml ps
         ;;
     stop)
-        stop
+        docker-compose -f ./deployments/docker-compose.yaml down
         ;;
     *)
         echo "$0  clean | run | stop "
