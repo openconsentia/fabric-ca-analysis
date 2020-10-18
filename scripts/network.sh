@@ -19,6 +19,7 @@ function cleanClient(){
 
 function cleanNetwork(){
     docker-compose -f ./deployments/docker-compose.yaml down
+    docker-compose -f ./deployments/docker-compose.yaml rm
     rm -rf ./deployments/fabric-tlsca-server
 }
 

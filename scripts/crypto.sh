@@ -4,6 +4,10 @@ COMMAND=$1
 
 crypto_dir=./deployments/crypto
 
+##
+## This operation use openssl to generate private keys and certificate.
+## The artefacts are stored in generated folder `./crypto`
+##
 function cert(){
     clean
     mkdir -p $crypto_dir

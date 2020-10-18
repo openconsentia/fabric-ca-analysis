@@ -1,7 +1,15 @@
+##
+## This simulate a deployment scenario of Fabric CA.
+## Please refer to this for details https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/deployguide/ca-deploy.html
+##
+
 version: '3'
 
 services:
 
+    ##
+    ## This is the server component of the Fabric CA.
+    ##
     server-ca:
         build:
             context: ../
@@ -11,6 +19,7 @@ services:
         environment:
             - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
             - FABRIC_CA_SERVER_CA_NAME=server.ca
+            ## Settings to enable TLS communications with the client-ca
             - FABRIC_CA_SERVER_TLS_ENABLED=true
             - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server/crypto/network-cert.pem
             - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server/crypto/secrets.key
@@ -26,6 +35,9 @@ services:
         networks: 
             - oc-fabric-ca-analysis
 
+    ##
+    ## This Fabric CA is configure and dedicated to providing TLS certificate
+    ## Please refe to this for detail https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/operations_guide.html
     tls-ca:
         image: hyperledger/fabric-ca:1.4.9
         container_name: tls-ca
@@ -43,6 +55,9 @@ services:
         networks: 
             - oc-fabric-ca-analysis      
 
+    ##
+    ## This is as a client app intended for interacting with server-ca.
+    ##
     client-ca:
         image: hyperledger/fabric-ca:1.4.9
         container_name: client-ca
