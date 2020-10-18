@@ -4,5 +4,5 @@ color_scheme: "light"
 search_enabled: true
 
 aux_links:
-    "Fabric Devkit on GitHub":
-      - "//github.com/fabric-devkit/"
+    "Fabric CA analysis on GitHub":
+      - "//github.com/openconsentia/fabric-ca-analysis"
