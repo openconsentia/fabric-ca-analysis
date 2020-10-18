@@ -14,7 +14,7 @@ You are expected to be familiar with the operations of `docker` and `docker-comp
 
 ## How to use this project?
 
-Please refer to scripts found in [./deployments](../deployments) to get information learn about orchestration and operations of [Fabric CA][1].
+Please refer to scripts found in [./deployments](../deployments) to get information learn about orchestration and operations of [Fabric CA][1]. Use this demonstrator together with the [official operational guide](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/operations_guide.html) to help you learn about the technology.
  
 Use this project to perform these operations:
 

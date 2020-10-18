@@ -4,5 +4,5 @@ color_scheme: "light"
 search_enabled: true
 
 aux_links:
-    "Fabric CA analysis on GitHub":
+    "Click here to see the codes in GitHub":
       - "//github.com/openconsentia/fabric-ca-analysis"
