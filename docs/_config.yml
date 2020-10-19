@@ -5,4 +5,4 @@ search_enabled: true
 
 aux_links:
     "Click here to see the codes in GitHub":
-      - "//github.com/openconsentia/fabric-ca-analysis"
+      - "https://github.com/openconsentia/fabric-ca-analysis"
