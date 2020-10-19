@@ -58,7 +58,7 @@ Run the command `./scripts/shell server` to access, via bash shell, the internal
 
 Please click on the link in the sidebar named `Server` for more information about using and orchestraing the server component.
 
-## Disclaimer
+## Disclaimer
 
 This project is intended only to demonstrate concepts. It is **not** for production or mission critical use.
 
