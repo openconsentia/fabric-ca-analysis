@@ -7,7 +7,7 @@ When you spin up the network, you will find a container named `client-ca` hostin
 
 In this project, the `client-ca` container has two scripts mounted:
 
-* [./deployments/scripts/registring-admin2.sh][2];
+* [./deployments/scripts/registering-admin2.sh][2];
 
 * [./deployments/scripts/revoke-identity.sh][3].
 
@@ -56,5 +56,5 @@ These are the step to run this scenario, assuming you already have a running net
 1. If you were using this in the context of a Hyperledger, you would be using an SDK instead of the `fabric-ca-client`.
 
 [1]: https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#fabric-ca-client
-[2]: https://github.com/openconsentia/fabric-ca-analysis/blob/master/deployments/scripts/registring-admin2.sh
+[2]: https://github.com/openconsentia/fabric-ca-analysis/blob/master/deployments/scripts/registering-admin2.sh
 [3]: https://github.com/openconsentia/fabric-ca-analysis/blob/master/deployments/scripts/revoke-identity.sh
