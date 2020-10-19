@@ -18,20 +18,21 @@ verifyArg
 echo
 echo "========================================================="
 echo "Enrolling this client with the following credentials"
-echo "at fabric-ca-server:7050"
+echo "at server-ca:7050"
 echo "========================================================="
 echo
 echo "  username: admin"
 echo "  password: adminpw"
 echo
-fabric-ca-client enroll -u http://admin:adminpw@fabric-ca-server:7054
+fabric-ca-client enroll -u https://admin:adminpw@server-ca:7054
 echo "Client enrolled!"
 echo
 
 echo
 id_attrs='hf.Revoker=true,admin=true:ecert'
 echo "====================================================="
-echo "Registering a peer following a successful enrollment."
+echo "Registering a peer named $admin following a successful" 
+echo "enrollment."
 echo "====================================================="
 echo
 echo " id.type: peer"
@@ -45,22 +46,15 @@ passwd=$(echo $password | awk '{print $2}')
 echo $passwd
 
 echo
-echo "Expected user in database: "
-echo " admin"
-echo " admin2"
-sqlite3 ./fabric-ca-home/fabric-ca-server.db "select * from users"
-
-
-echo
 echo "========================================================="
 echo "Enrolling this client with the following credentials"
-echo "at fabric-ca-server:7050"
+echo "at server-ca:7050"
 echo "========================================================="
 echo
 echo "  username: $admin"
 echo "  password: $passwd"
 echo
-fabric-ca-client enroll -u http://$admin:$passwd@fabric-ca-server:7054 -M misc
+fabric-ca-client enroll -u https://$admin:$passwd@server-ca:7054 -M misc
 if [ $? -eq 0 ]; then
     echo "Client enrolled!"
 else
@@ -81,9 +75,4 @@ echo " username: $admin"
 echo 
 fabric-ca-client revoke -e $admin -r unspecified
 echo
-
-echo
-echo "Expected: $admin revoked"
-echo "Got:"
-sqlite3 ./fabric-ca-home/fabric-ca-server.db "select * from certificates" | grep $admin
 
