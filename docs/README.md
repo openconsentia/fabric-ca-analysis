@@ -8,13 +8,13 @@ You are expected to be familiar with the operations of `docker` and `docker-comp
 
 ## What is in this project?
 
-* Docker-compose based deployments of [Fabric CA][1] with custom instrumentations located in this folder [./deployments/docker-compose.yaml](https://github.com/openconsentia/fabric-ca-analysis/deployments/docker-compose.yaml);
+* Docker-compose based deployments of [Fabric CA][1] with custom instrumentations located in this folder [./deployments/docker-compose.yaml](https://github.com/openconsentia/fabric-ca-analysis/blob/master/deployments/docker-compose.yaml);
 
-* A set of [bash shell scripts](https://github.com/openconsentia/fabric-ca-analysis/deployments/scripts) to help you interact with the [Fabric CA][1] deployments.
+* A set of [bash shell scripts](https://github.com/openconsentia/fabric-ca-analysis/blob/master/deploymentss/scripts) to help you interact with the [Fabric CA][1] deployments.
 
 ## How to use this project?
 
-Please refer to scripts found in [./deployments](https://github.com/openconsentia/fabric-ca-analysis/deployments) to get information learn about orchestration and operations of [Fabric CA][1]. Use this demonstrator together with the [official operational guide](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/operations_guide.html) to help you learn about the technology.
+Please refer to scripts found in [./deployments](https://github.com/openconsentia/fabric-ca-analysis/blob/master/deployments) to get information learn about orchestration and operations of [Fabric CA][1]. Use this demonstrator together with the [official operational guide](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/operations_guide.html) to help you learn about the technology.
  
 Use this project to perform these operations:
 
@@ -26,7 +26,7 @@ Use this project to perform these operations:
 
 #### Spin up a local network
 
-Use this [./scripts/network.sh](https://github.com/openconsentia/fabric-ca-analysis/scripts/network.sh) to operate your local network of [Fabric CA][1] and supporting containers. 
+Use this [./scripts/network.sh](https://github.com/openconsentia/fabric-ca-analysis/blob/master/scripts/network.sh) to operate your local network of [Fabric CA][1] and supporting containers. 
 
 Run the following commands:
 
@@ -42,13 +42,13 @@ Run the following commands:
 
 Run the command `./scripts/shell.sh client` to access, via bash shell, the internals of [Fabric CA Client][2] in your network.
 
-To help you appreciate the operations you can perform internally in [Fabric CA Client][2], please refer to these [scripts](https://github.com/openconsentia/fabric-ca-analysis/deployments/scripts), which are mounted as part of the client container.
+To help you appreciate the operations you can perform internally in [Fabric CA Client][2], please refer to these [scripts](https://github.com/openconsentia/fabric-ca-analysis/blob/master/deployments/scripts), which are mounted as part of the client container.
 
 #### Access the internal of [Fabric CA Server][3]
 
 Run the command `./scripts/shell server` to access, via bash shell, the internals of [Fabric CA Server][3] in your network.
 
-To help you appreciate the operations you can perform internally in [Fabric CA Server][3], please refer to these [scripts](https://github.com/openconsentia/fabric-ca-analysis/deployments/scripts), which are mounted as part of the server container.
+To help you appreciate the operations you can perform internally in [Fabric CA Server][3], please refer to these [scripts](https://github.com/openconsentia/fabric-ca-analysis/blob/master/deployments/scripts), which are mounted as part of the server container.
 
 ## Copyright
 
