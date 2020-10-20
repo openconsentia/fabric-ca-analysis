@@ -50,13 +50,13 @@ When you spin up the local network, an openssl based certificate is also generat
 
 Run the command `./scripts/shell.sh client` to access, via bash shell, the container of [Fabric CA Client][2] in your network.
 
-Please click on the link in the sidebar named `Client` for more information about using and orchestraing the server component.
+Please go to [Client](https://openconsentia.github.io/fabric-ca-analysis/Client.html) topic for more information about using and orchestraing the demonstrator's client component.
 
 #### Manipulate the [Fabric CA Server][3]
 
 Run the command `./scripts/shell server` to access, via bash shell, the internals of [Fabric CA Server][3] in your network.
 
-Please click on the link in the sidebar named `Server` for more information about using and orchestraing the server component.
+Please go to [Server](https://openconsentia.github.io/fabric-ca-analysis/Server.html) topic for more information about using and orchestraing the demonstrator's server component.
 
 ## Disclaimer
 
