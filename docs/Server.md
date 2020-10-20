@@ -3,6 +3,8 @@ title: Server
 nav_order: 2
 ---
 
+# Server
+
 Please refer to the official [User Guide][1] to learn more about the use of the tool.
 
 When you spin up your local network you will find a docker container named `server-ca` hosting a [Fabric CA][1]. To help you manipulate the server, a script name [./deployments/query.sh](https://github.com/openconsentia/fabric-ca-analysis/blob/master/deployments/scripts/query.sh) has been mounted in the container.
