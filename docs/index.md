@@ -17,9 +17,7 @@ Unfortunately it is beyond the scope of this project to explain the inner workin
 
 ## What is in this project?
 
-Clone this [GitHub repository](https://github.com/openconsentia/fabric-ca-analysis).
-
-In the repo, you will find the following artefacts:
+Clone this [GitHub repository](https://github.com/openconsentia/fabric-ca-analysis) and you will find the following artefacts:
 
 * Customised docker images and scripts with instrumentations to help you interact with a deployment of [Fabric CA][fabric-ca];
 
@@ -32,6 +30,8 @@ Out-of-the-box you will find the following deployment scenarios:
 * [Scenario 1][tls]: Using TLS to secure comminications between a [Fabric CA Client][fabric-ca-client] and a [Fabric CA Server][fabric-ca-server].
 
 * [Scenario 2][register]: Enroll, register and revoke identities.
+
+
 
 ## Copyright
 

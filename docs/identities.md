@@ -13,7 +13,6 @@ In this project, the `client-ca` container has two scripts mounted:
 
 * [./deployments/scripts/revoke-identity.sh][3].
 
-
 ## Registring an entity named `admin2`
 
 In this scenario, the script invokes the `fabric-ca-client` to enroll the client using a bootstrap identity `admin@adminpw` pre-registered in the server. The enroll identity register a new identity named `admin2` and its associated organisational affliation. This has the effect of collecting the necessary certificates and keys, and storing it in a folder call `msp` -- i.e. a kind of cryptographic wallet i.e. `/deployments/fabric-ca-client-home/msp`.
