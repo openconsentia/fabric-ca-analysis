@@ -25,7 +25,14 @@ These are the step to run this scenario, assuming you already have a running net
 
 1. In your shell, run the command `./registering-admin2.sh`
 
-If you like to see if your new identity is being registered in the server end, open another terminal (`./script/shell.sh server`) into the server and query the database.
+If you like to see if your new identity is being registered in the server end, open another terminal (`./script/shell.sh server`) into the server and query the database. You should see the identity as shown below:
+
+```
+admin|$2a$10$ViiNsOOb5sFZbCGzqofhhuO/9OhnSjxjLEsHu.jE6RLlNwmJavrl.|client||[{"name":"hf.IntermediateCA","value":"1"},{"name":"hf.GenCRL","value":"1"},{"name":"hf.Registrar.Attributes","value":"*"},{"name":"hf.AffiliationMgr","value":"1"},{"name":"hf.Registrar.Roles","value":"*"},{"name":"hf.Registrar.DelegateRoles","value":"*"},{"name":"hf.Revoker","value":"1"}]|1|-1|2|0
+admin2|$2a$10$qHrVYdFct7eVPhVk8JFtRugytEXTmO5mnZwnlIml4vR1cKk9mgsvq|peer|org1.department1|[{"name":"hf.Revoker","value":"true"},{"name":"admin","value":"true","ecert":true},{"name":"hf.EnrollmentID","value":"admin2","ecert":true},{"name":"hf.Type","value":"peer","ecert":true},{"name":"hf.Affiliation","value":"org1.department1","ecert":true}]|0|-1|2|0
+```
+
+**NOTE:** The server in this deployment uses `sqlite` db to store identities. You can replace this with other database, please refer to the official [operations guide][ops-guide].
 
 ## Revoking identity
 
@@ -59,6 +66,7 @@ These are the step to run this scenario, assuming you already have a running net
 1. If you were using this in the context of a Hyperledger Fabric application, you would be using an SDK instead of the `fabric-ca-client`.
 
 [user-guide]: https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#fabric-ca-client
+[ops-guide]: https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/operations_guide.html
 
 [register]: https://github.com/openconsentia/fabric-ca-analysis/blob/master/deployments/scripts/registering-admin2.sh
 [revoke]: https://github.com/openconsentia/fabric-ca-analysis/blob/master/deployments/scripts/revoke-identity.sh
