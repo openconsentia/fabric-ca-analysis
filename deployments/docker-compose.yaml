@@ -36,26 +36,6 @@ services:
             - oc-fabric-ca-analysis
 
     ##
-    ## This Fabric CA is configure and dedicated to providing TLS certificate
-    ## Please refe to this for detail https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/operations_guide.html
-    tls-ca:
-        image: hyperledger/fabric-ca:1.4.9
-        container_name: tls-ca
-        command: sh -c 'fabric-ca-server start -d -b tls-ca-admin:tls-ca-adminpw --port 7052'
-        environment: 
-            - FABRIC_CA_SERVER_HOME=/etc/hyperledger/fabric-ca-server
-            - FABRIC_CA_SERVER_TLS_ENABLED=true
-            - FABRIC_CA_SERVER_CSR_CN=ca-tls
-            - FABRIC_CA_SERVER_CSR_HOSTS=0.0.0.0
-            - FABRIC_CA_SERVER_DEBUG=true
-        volumes:
-            - ./fabric-tlsca-server:/etc/hyperledger/fabric-ca-server
-        ports:
-            - 7052:7052
-        networks: 
-            - oc-fabric-ca-analysis      
-
-    ##
     ## This is as a client app intended for interacting with server-ca.
     ##
     client-ca:
@@ -74,6 +54,26 @@ services:
             - ./crypto/secrets.key:/opt/certs/secrets.key
         networks: 
             - oc-fabric-ca-analysis
+
+    ##
+    ## This Fabric CA is configure and dedicated to providing TLS certificate
+    ## Please refe to this for detail https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/operations_guide.html
+    tls-ca:
+        image: hyperledger/fabric-ca:1.4.9
+        container_name: tls-ca
+        command: sh -c 'fabric-ca-server start -d -b tls-ca-admin:tls-ca-adminpw --port 7052'
+        environment: 
+            - FABRIC_CA_SERVER_HOME=/etc/hyperledger/fabric-ca-server
+            - FABRIC_CA_SERVER_TLS_ENABLED=true
+            - FABRIC_CA_SERVER_CSR_CN=ca-tls
+            - FABRIC_CA_SERVER_CSR_HOSTS=0.0.0.0
+            - FABRIC_CA_SERVER_DEBUG=true
+        volumes:
+            - ./fabric-tlsca-server:/etc/hyperledger/fabric-ca-server
+        ports:
+            - 7052:7052
+        networks: 
+            - oc-fabric-ca-analysis      
 
 networks:
     oc-fabric-ca-analysis:
