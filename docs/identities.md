@@ -5,14 +5,15 @@ nav_order: 3
 
 # Enrolling, registering and revoking identities
 
-When you spin up the network, you will find a container named `client-ca` hosting a cli based app name `fabric-ca-client`. For details on the use of the app, please refer to the [User Guide][1] for detail operations.
+When you spin up the network, you will find a container named `client-ca` hosting a cli based app name `fabric-ca-client`. For details on the use of the app, please refer to the [User Guide][user-guide] for detail operations.
 
 In this project, the `client-ca` container has two scripts mounted:
 
-* [./deployments/scripts/registering-admin2.sh][2];
+* [./deployments/scripts/registering-admin2.sh][register];
 
-* [./deployments/scripts/revoke-identity.sh][3].
+* [./deployments/scripts/revoke-identity.sh][revoke].
 
+Use these scripts to perform identities management.
 
 ## Registring an entity named `admin2`
 
@@ -51,12 +52,13 @@ These are the step to run this scenario, assuming you already have a running net
 
 ## Note
 
-1. You may need to remove the the folder `fabric-ca-client-home/msp` between each scenario
+1. You may need to remove the the folder `fabric-ca-client-home/msp` between each scenario to ensure that your are generating new artefacts.
 
 1. The app `fabric-ca-client` is use to create the `msp` and to interact with the server.
 
-1. If you were using this in the context of a Hyperledger, you would be using an SDK instead of the `fabric-ca-client`.
+1. If you were using this in the context of a Hyperledger Fabric application, you would be using an SDK instead of the `fabric-ca-client`.
 
-[1]: https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#fabric-ca-client
-[2]: https://github.com/openconsentia/fabric-ca-analysis/blob/master/deployments/scripts/registering-admin2.sh
-[3]: https://github.com/openconsentia/fabric-ca-analysis/blob/master/deployments/scripts/revoke-identity.sh
+[user-guide]: https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#fabric-ca-client
+
+[register]: https://github.com/openconsentia/fabric-ca-analysis/blob/master/deployments/scripts/registering-admin2.sh
+[revoke]: https://github.com/openconsentia/fabric-ca-analysis/blob/master/deployments/scripts/revoke-identity.sh
