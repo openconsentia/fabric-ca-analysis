@@ -31,8 +31,6 @@ Out-of-the-box you will find the following deployment scenarios:
 
 * [Scenario 2][register]: Enroll, register and revoke identities.
 
-
-
 ## Copyright
 
 Copyright 2020 Open Consentia Contributors.
