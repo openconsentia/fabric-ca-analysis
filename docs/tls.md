@@ -1,5 +1,5 @@
 ---
-title: Server
+title: TLS deployment
 nav_order: 2
 ---
 
@@ -15,5 +15,4 @@ For advance operations, please refer to the official [Operations Guide][2]. Reco
 
 
 [1]: https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#fabric-ca-server
-
 [2]: https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/operations_guide.html
