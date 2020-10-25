@@ -70,5 +70,6 @@ These are the step to run this scenario, assuming you already have a running net
 [user-guide]: https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#fabric-ca-client
 [ops-guide]: https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/operations_guide.html
 
+[docker-compose]: https://github.com/openconsentia/fabric-ca-analysis/blob/master/deployments/tls-docker-compose.yaml
 [register]: https://github.com/openconsentia/fabric-ca-analysis/blob/master/deployments/scripts/registering-admin2.sh
 [revoke]: https://github.com/openconsentia/fabric-ca-analysis/blob/master/deployments/scripts/revoke-identity.sh
