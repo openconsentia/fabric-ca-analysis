@@ -40,7 +40,7 @@ Use the following commands to work with the network:
 * `./scripts/tls-scenario.sh clean` to remove docker containers and images from your machine. 
 
 
-[user-guide]: https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#
+[user-guide]: https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html
 [ops-guide]: https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/operations_guide.html
 
 [crypto]: https://github.com/openconsentia/fabric-ca-analysis/blob/master/scripts/crypto.sh
