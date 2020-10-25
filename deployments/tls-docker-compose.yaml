@@ -34,7 +34,7 @@ services:
         ports:
             - 7054:7054
         networks: 
-            - oc-fabric-ca-analysis
+            - oc-tls-fca-analysis
 
     ##
     ## This is as a client app intended for interacting with server-ca.
@@ -54,7 +54,7 @@ services:
             - ./crypto/network-cert.pem:/opt/certs/network-cert.pem
             - ./crypto/secrets.key:/opt/certs/secrets.key
         networks: 
-            - oc-fabric-ca-analysis
+            - oc-tls-fca-analysis
 
     ##
     ## This Fabric CA is configure and dedicated to providing TLS certificate
@@ -74,7 +74,7 @@ services:
         ports:
             - 7052:7052
         networks: 
-            - oc-fabric-ca-analysis      
+            - oc-tls-fca-analysis      
 
 networks:
-    oc-fabric-ca-analysis:
+    oc-tls-fca-analysis:
