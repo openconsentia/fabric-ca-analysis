@@ -5,7 +5,7 @@ nav_order: 2
 
 # Securing your deployment with TLS
 
-Please refer to the official [User Guide][server-user-guide] to learn about `Fabric CA's` features.
+Please refer to the official [User Guide][user-guide] to learn about `Fabric CA's` features.
 
 ## Securing with Openssl Certs
 
