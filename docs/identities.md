@@ -5,6 +5,8 @@ nav_order: 3
 
 # Enrolling, registering and revoking identities
 
+This scenario uses this [docker-compose file][docker-compose] using `client-ca` and `server-ca` containers as basis for your experiments.
+
 When you spin up the network, you will find a container named `client-ca` hosting a cli based app name `fabric-ca-client`. For details on the use of the app, please refer to the [User Guide][user-guide] for detail operations.
 
 In this project, the `client-ca` container has two scripts mounted:
@@ -21,11 +23,11 @@ In this scenario, the script invokes the `fabric-ca-client` to enroll the client
 
 These are the step to run this scenario, assuming you already have a running network:
 
-1. Run the command `./script/shell.sh client`.
+1. Run the command `./script/tls-scenario.sh shell client`.
 
 1. In your shell, run the command `./registering-admin2.sh`
 
-If you like to see if your new identity is being registered in the server end, open another terminal (`./script/shell.sh server`) into the server and query the database. You should see the identity as shown below:
+If you like to see if your new identity is being registered in the server end, open another terminal (`./script/tls-scenario.sh shell server`) into the server and query the database. You should see the identities listed in the server similar to the one as shown below:
 
 ```
 admin|$2a$10$ViiNsOOb5sFZbCGzqofhhuO/9OhnSjxjLEsHu.jE6RLlNwmJavrl.|client||[{"name":"hf.IntermediateCA","value":"1"},{"name":"hf.GenCRL","value":"1"},{"name":"hf.Registrar.Attributes","value":"*"},{"name":"hf.AffiliationMgr","value":"1"},{"name":"hf.Registrar.Roles","value":"*"},{"name":"hf.Registrar.DelegateRoles","value":"*"},{"name":"hf.Revoker","value":"1"}]|1|-1|2|0
