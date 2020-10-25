@@ -5,14 +5,10 @@
 deployments/Crypto
 
 # Fabric CA Client
-deployments/fabric-ca-client-home/msp
+deployments/fabric-ca-client-home
 
 # Fabric TLS CA server
 deployments/fabric-tlsca-server
 
 # Fabric CA Server
-deployments/fabric-ca-server-home/msp
-deployments/fabric-ca-server-home/ca-cert.pem
-deployments/fabric-ca-server-home/fabric-ca-server.db
-deployments/fabric-ca-server-home/IssuerPublicKey
-deployments/fabric-ca-server-home/IssuerRevocationPublicKey
+deployments/fabric-ca-server-home

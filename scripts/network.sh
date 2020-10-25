@@ -21,6 +21,8 @@ function cleanNetwork(){
     docker-compose -f ./deployments/docker-compose.yaml down
     docker-compose -f ./deployments/docker-compose.yaml rm
     rm -rf ./deployments/fabric-tlsca-server
+    rm -rf ./deployments/fabric-ca-server-home
+    rm -rf ./deployments/fabric-ca-client-home
 }
 
 function cleanImages(){
