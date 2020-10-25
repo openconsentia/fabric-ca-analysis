@@ -27,7 +27,7 @@ services:
         command: sh -c "fabric-ca-server start -b admin:adminpw -d"
         volumes:
             - ./fabric-ca-server-home:/etc/hyperledger/fabric-ca-server
-            - ./server-ca-config/fabric-ca-server-config.yaml:/etc/hyperledger/fabric-ca-server/fabric-ca-server-config.yaml
+            - ./ca-tls-config/fabric-ca-server-config.yaml:/etc/hyperledger/fabric-ca-server/fabric-ca-server-config.yaml
             - ./scripts/query.sh:/opt/query.sh
             - ./crypto/network-cert.pem:/etc/hyperledger/fabric-ca-server/crypto/network-cert.pem
             - ./crypto/secrets.key:/etc/hyperledger/fabric-ca-server/crypto/secrets.key
@@ -49,7 +49,7 @@ services:
         volumes:
             - ./scripts/registering-admin2.sh:/opt/registering-admin2.sh
             - ./scripts/revoke-identity.sh:/opt/revoke-identity.sh
-            - ./client-ca-config/fabric-ca-client-config.yaml:/opt/fabric-ca-client-home/fabric-ca-client-config.yaml
+            - ./ca-tls-config/fabric-ca-client-config.yaml:/opt/fabric-ca-client-home/fabric-ca-client-config.yaml
             - ./fabric-ca-client-home/msp:/opt/fabric-ca-client-home/msp
             - ./crypto/network-cert.pem:/opt/certs/network-cert.pem
             - ./crypto/secrets.key:/opt/certs/secrets.key
