@@ -27,13 +27,14 @@ services:
         command: sh -c "fabric-ca-server start -b admin:adminpw -d"
         volumes:
             - ./fabric-ca-server-home:/etc/hyperledger/fabric-ca-server
+            - ./ca-tls-config/fabric-ca-server-config.yaml:/etc/hyperledger/fabric-ca-server/fabric-ca-server-config.yaml
             - ./scripts/query.sh:/opt/query.sh
             - ./crypto/network-cert.pem:/etc/hyperledger/fabric-ca-server/crypto/network-cert.pem
             - ./crypto/secrets.key:/etc/hyperledger/fabric-ca-server/crypto/secrets.key
         ports:
             - 7054:7054
         networks: 
-            - oc-fabric-ca-analysis
+            - oc-tls-fca-analysis
 
     ##
     ## This is as a client app intended for interacting with server-ca.
@@ -48,12 +49,12 @@ services:
         volumes:
             - ./scripts/registering-admin2.sh:/opt/registering-admin2.sh
             - ./scripts/revoke-identity.sh:/opt/revoke-identity.sh
-            - ./fabric-ca-client-home/fabric-ca-client-config.yaml:/opt/fabric-ca-client-home/fabric-ca-client-config.yaml
+            - ./ca-tls-config/fabric-ca-client-config.yaml:/opt/fabric-ca-client-home/fabric-ca-client-config.yaml
             - ./fabric-ca-client-home/msp:/opt/fabric-ca-client-home/msp
             - ./crypto/network-cert.pem:/opt/certs/network-cert.pem
             - ./crypto/secrets.key:/opt/certs/secrets.key
         networks: 
-            - oc-fabric-ca-analysis
+            - oc-tls-fca-analysis
 
     ##
     ## This Fabric CA is configure and dedicated to providing TLS certificate
@@ -73,7 +74,7 @@ services:
         ports:
             - 7052:7052
         networks: 
-            - oc-fabric-ca-analysis      
+            - oc-tls-fca-analysis      
 
 networks:
-    oc-fabric-ca-analysis:
+    oc-tls-fca-analysis:
