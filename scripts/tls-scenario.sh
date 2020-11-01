@@ -4,7 +4,7 @@ COMMAND=$1
 SUBCOMMAND=$2
 ARGS_NUM=$#
 
-export SERVER_IMAGE_NAME=oc/ca-server
+export SERVER_IMAGE_NAME=oc/ca-server:current
 
 # Network operations
 function cleanServer(){
