@@ -3,7 +3,7 @@ title: Multiple Fabric CAs
 nav_order: 4
 ---
 
-# Setting up a network of an root and immediate Fabric CA.
+# Setting up a network with multiple Fabric CAs
 
 Please refer to the official [user guide][user-guide] for explanation on setting up a multiple Fabric CA network. 
 
@@ -12,7 +12,7 @@ To relate to help you related to the official documentation, please refer to thi
 * an command line orchestrator to register an intermediate CA.
 * an end command line interface to interact with the intermediate CA.
 
-In this demonstrator, you will see both the clients built based on Ubuntu albeit in Docker form.
+In this demonstrator, you will see all artefacts built based on Ubuntu platform albeit in Docker form.
 
 ## Out-of-the-box
 
