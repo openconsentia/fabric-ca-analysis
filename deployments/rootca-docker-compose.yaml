@@ -1,0 +1,86 @@
+version: '3'
+
+services:
+
+    #
+    # A Root CA 
+    # 
+    rootca:
+        build:
+            context: ../
+            dockerfile: ./deployments/server.dockerfile
+        image: ${ROOTCA_IMAGE}
+        container_name: rootca
+        ports:
+          - 7054:7054
+        environment:
+          - FABRIC_CA_HOME=/opt/fabric-ca-server
+          - FABRIC_LOGGING_SPEC=debug
+        working_dir: /opt
+        command: sh -c "fabric-ca-server start -d"
+        volumes:
+          - ./ca-root-config/root/fabric-ca-server-config.yaml:/opt/fabric-ca-server/fabric-ca-server-config.yaml
+          - ./scripts/query.sh:/opt/scripts/query.sh
+        networks:
+          - oc-root-fca-analysis
+    
+    #
+    # Intermediate CA organisation
+    #
+
+    # Intermediate CA server
+    ica:
+        build:
+            context: ../
+            dockerfile: ./deployments/server.dockerfile
+        image: ${ICA_SERVER_IMAGE}
+        container_name: ica
+        environment:
+          - FABRIC_CA_HOME=/opt/fabric-ca-server
+          - FABRIC_LOGGING_SPEC=debug
+        ports:
+          - 8054:7054
+        working_dir: /opt
+        # Enrolling iCA to root ca via the -u flag
+        command: sh -c 'fabric-ca-server start -d'
+        volumes:
+          - ./ca-root-config/ica/fabric-ca-server-config.yaml:/opt/fabric-ca-server/fabric-ca-server-config.yaml
+          - ./scripts/query.sh:/opt/scripts/query.sh
+        networks:
+          - oc-root-fca-analysis
+
+    icaclient:
+        build:
+          context: ../
+          dockerfile: ./deployments/client.dockerfile
+        image: ${ICA_CLIENT_IMAGE}
+        container_name: icaclient
+        tty: true
+        environment: 
+          - FABRIC_CA_CLIENT_HOME=/opt/fabric-ca-client-home
+        working_dir: /opt
+        volumes:
+          - ./scripts/register-ica.sh:/opt/scripts/register-ica.sh
+        networks:
+          - oc-root-fca-analysis
+    
+    # Simulated peer client
+    peerclient:
+      build:
+        context: ../
+        dockerfile: ./deployments/client.dockerfile
+      image: ${PEER_CLIENT_IMAGE}
+      container_name: peerclient
+      tty: true
+      environment: 
+        - FABRIC_CA_CLIENT_HOME=/opt/fabric-ca-client-home
+      working_dir: /opt
+      volumes:
+        - ./scripts/register-user-no-tls.sh:/opt/scripts/register-user-no-tls.sh
+        - ./ca-root-config/peer/fabric-ca-client-config.yaml:/opt/fabric-ca-client-home/fabric-ca-client-config.yaml
+      networks:
+        - oc-root-fca-analysis
+    
+
+networks:
+    oc-root-fca-analysis:
