@@ -41,7 +41,6 @@ services:
         ports:
           - 8054:7054
         working_dir: /opt
-        # Enrolling iCA to root ca via the -u flag
         command: sh -c 'fabric-ca-server start -d'
         volumes:
           - ./ca-root-config/ica/fabric-ca-server-config.yaml:/opt/fabric-ca-server/fabric-ca-server-config.yaml
@@ -49,6 +48,7 @@ services:
         networks:
           - oc-root-fca-analysis
 
+    # Intermediate CA client
     icaclient:
         build:
           context: ../

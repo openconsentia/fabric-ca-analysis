@@ -23,8 +23,15 @@ function cleanImages(){
 }
 
 function run(){
+    # Spin-up an instance of Root CA
     docker-compose -f ./deployments/rootca-docker-compose.yaml up -d rootca
+
+    # Execute a script to register the intermediate CA on the Root CA via a dedicated
+    # client known as `icaclient`. This will spin up and automatically shutdown after
+    # execution of the registration script.
     docker-compose -f ./deployments/rootca-docker-compose.yaml run --rm icaclient sh -c './scripts/register-ica.sh'
+
+    # Spin-up the intermediate CA
     docker-compose -f ./deployments/rootca-docker-compose.yaml up -d ica
 }
 
