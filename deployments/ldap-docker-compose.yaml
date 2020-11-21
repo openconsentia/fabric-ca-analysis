@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+
+  ldap:
+    image: osixia/openldap:1.4.0
+    container_name: ldap-server
+    ports:
+      - "389:389"
+      - "689:689"
+    environment:
+      - LDAP_ORGANISATION=example.com
+      - LDAP_DOMAIN=example.com
+      - LDAP_ADMIN_PASSWORD=adminpw
+    volumes:
+      - /tmp:/tmp
+    networks:
+      - oc-ldap-fca-analysis
+
+  ldap-ca-server:
+    build:
+      context: ../
+      dockerfile: ./deployments/server.dockerfile
+    image: ${CA_SERVER_IMAGE}
+    container_name: ca-server
+    environment:
+      - FABRIC_CA_HOME=/opt/fabric-ca-server
+      - FABRIC_LOGGING_SPEC=debug
+    ports:
+      - 8054:7054
+    working_dir: /opt
+    command: sh -c 'fabric-ca-server start -d'
+    networks:
+      - oc-ldap-fca-analysis
+
+  ldap-ca-client:
+     build:
+        context: ../
+        dockerfile: ./deployments/client.dockerfile
+    image: ${CA_CLIENT_IMAGE}
+    container_name: icaclient
+    tty: true
+    environment: 
+      - FABRIC_CA_CLIENT_HOME=/opt/fabric-ca-client-home
+    working_dir: /opt
+    volumes:
+      - ./scripts/register-ica.sh:/opt/scripts/register-ica.sh
+    networks:
+      - oc-ldap-fca-analysis
+
+networks:
+  oc-ldap-fca-analysis:
